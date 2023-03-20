@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <h3>{{ announcement.title }}</h3>
+    <p class="text-secondary">{{ announcement.author }} | {{ announcement.created_on }}</p>
+    <p>{{ announcement.content }}</p>
+    <a href="/" class="btn">Wróć</a>
+</div>
+{% endblock %}

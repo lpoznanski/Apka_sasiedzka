@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for announcement in announcement_list %}
-    <div>
-    <h4>{{ announcement.title }}</h4>
-    <p>{{ announcement.content }}</p>
-    </div>
+    <div class="card">
+    <h3>{{ announcement.title }}</h3>
+    <p class="text-secondary">{{ announcement.author }} | {{ announcement.created_on }}</p>
+    <p class="">{{ announcement.content|slice:":150" }}</p>
+    <a href="{% url 'post-detail' announcement.slug %}" class="btn">Więcej</a>
 {%  endfor %}
 {% endblock %}
