@@ -5,10 +5,20 @@
     <title>Apka sąsiedzka</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 </head>
-<body>
-<header>
-{% include 'navbar.html' %}
-</header>
-{% block content %}{% endblock %}
-</body>
+    <body style="background-image: linear-gradient(90deg, #B7F0AD, #D2FF96)">
+        <header>
+            {% include 'navbar.html' %}
+        </header>
+        <div class="container my-5">
+        <div class="d-flex flex-row-reverse p-2">
+            <div>
+                <form>
+                    <input class="rounded" type="search" placeholder="Szukaj" aria-label="Search">
+                    <button class="btn" style="background-color: #E8D33F; color: #57704e" type="submit">Szukaj</button>
+                </form>
+            </div>
+        </div>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
 </html>

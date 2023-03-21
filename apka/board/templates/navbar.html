@@ -1,26 +1,33 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="/">
-        <image src="{% static 'as-logo.png' %}" width="200" height="200"></image>
+<nav class="navbar navbar-expand-xl">
+    <a class="navbar-brand px-4" href="/">
+        <img src="{% static 'as-logo2.png' %}" width="200" height="120" class="d-inline-block align-top">
     </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+    <div class="navbar-collapse">
+        <ul class="navbar-nav me-auto px-4">
+            <li class="nav-item active">
                 <a class="nav-link" href="#">Zgubione/znalezione</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ogłoszenia drobne</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Ogłoszenia drobne</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
-        </form>
+        <ul class="navbar-nav ms-auto px-4">
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="nav-link disabled">Dzień dobry, {{ user.username }}</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'logout' %}">Wyloguj</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'signup' %}">Rejestracja</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'login' %}">Logowanie</a>
+            </li>
+            {% endif %}
+        </ul>
     </div>
 </nav>
