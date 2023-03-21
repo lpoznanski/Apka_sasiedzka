@@ -17,14 +17,21 @@ class Announcement(models.Model):
         self.slug = slugify(self.title)
         super(Announcement, self).save()
 
+
+STATUS_CHOICES = (
+    ('1', 'zgubione'),
+    ('2', 'znalezione')
+)
+
 class Item(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='1')
     name = models.CharField(max_length=255)
     description = models.TextField()
-    photo = models.ImageField(upload_to='items')
+    photo = models.ImageField(upload_to='media/items')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
-    
