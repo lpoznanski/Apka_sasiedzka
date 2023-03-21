@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Create account</h3>
-<form method="post" style="">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="">Sign up</button>
-</form>
+<div class="p-3 mt-4">
+    <h3>Utwórz konto</h3>
+    <form method="post" style="">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button class="btn" style="background-color: #E8D33F; color: #57704e" type="submit">Zarejestruj się</button>
+    </form>
+</div>
 {% endblock %}
+
+
+{#style="background-color: #EDFF7A"#}
