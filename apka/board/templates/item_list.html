@@ -18,10 +18,17 @@
     </div>
 {%  endfor %}
 <div class="fixed-bottom container">
-    <div class="d-flex flex-row-reverse px-10">
-        <button class="btn" style="background-color: #E8D33F; color: #57704e" id="form_button">Dodaj rzecz</button>
+    <div class="d-flex flex-row-reverse px-10" id="form-div">
+        <button class="btn" style="background-color: #E8D33F; color: #57704e" id="form-button">Dodaj rzecz</button>
     </div>
 </div>
+
+{#<form method="post">#}
+{#{% csrf_token %}#}
+{#{{ form }}#}
+{#</form>#}
+
+
 {% load static %}
 <script src="{% static 'items.js' %}"></script>
 {% endblock %}

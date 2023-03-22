@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const formButton = document.querySelector('#form_button')
+    const formButton = document.querySelector('#form-button')
+    const formDiv = document.querySelector('#form-div')
     formButton.addEventListener('click', function () {
-        console.log('HWDP')
+        const newForm = document.createElement('form')
+        newForm.innerHTML = {{ form }}
+        formDiv.appendChild(newForm)
     })
 })
