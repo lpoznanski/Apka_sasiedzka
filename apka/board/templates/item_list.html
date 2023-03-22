@@ -2,13 +2,26 @@
 {% block content %}
 {% for item in item_list %}
     <div class="card p-3 mt-4" style="background-color: #EDFF7A">
-        <h5>Co zaginęło?</h5>
-        <p>{{ item.name }}</p>
-        <h5>Szczegóły</h5>
-        <p>{{ item.description }}</p>
-        <h5>Załączniki:</h5>
-        <img src="{{ item.photo.url }}" width="100">
-        <p class="text-secondary">Dodał(a): {{ item.author }} | {{ item.created_on }}</p>
+        <div class="d-flex flex-row justify-content-between">
+            <div class="">
+                <h3>{% if item.status == '1' %}Zgubione{% else %}Znalezione{% endif %}</h3>
+                <p>{{ item.name }}</p>
+                <p>{{ item.description }}</p>
+                <p class="text-secondary">Dodał(a): {{ item.author }} | {{ item.created_on }}</p>
+            </div>
+            {% if item.photo %}
+            <div class="px-3">
+                <img src="{{ item.photo.url }}" height="200">
+            </div>
+            {% endif %}
+        </div>
     </div>
 {%  endfor %}
+<div class="fixed-bottom container">
+    <div class="d-flex flex-row-reverse px-10">
+        <button class="btn" style="background-color: #E8D33F; color: #57704e" id="form_button">Dodaj rzecz</button>
+    </div>
+</div>
+{% load static %}
+<script src="{% static 'items.js' %}"></script>
 {% endblock %}

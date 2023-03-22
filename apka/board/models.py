@@ -28,7 +28,7 @@ class Item(models.Model):
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='1')
     name = models.CharField(max_length=255)
     description = models.TextField()
-    photo = models.ImageField(upload_to='media/items')
+    photo = models.ImageField(upload_to='media/items', null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
