@@ -35,3 +35,12 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+# class Image(models.Model):
+#     pass
+#
+# class Comment(models.Model):
+#     pass
+#
+# class UserDetail(models.Model):
+#     pass

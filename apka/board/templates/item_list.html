@@ -18,9 +18,10 @@
     </div>
 {%  endfor %}
 <div class="fixed-bottom container" id="form-div">
-    <form method="post" class="p-3" style="display: none" id="form">
+    <form method="POST" class="p-3" style="display: none" id="form">
 {#        style="background-color: #E8D33F; color: #57704e"#}
         {% csrf_token %}
+        {{ form.author }}
         <div class="form-group row">
             <label for="{{ form.status.id_for_label }}" class="col-sm-2 col-form-label">Status: </label>
             <div class="col-sm-10">
