@@ -17,18 +17,40 @@
         </div>
     </div>
 {%  endfor %}
-<div class="fixed-bottom container">
-    <div class="d-flex flex-row-reverse px-10" id="form-div">
+<div class="fixed-bottom container" id="form-div">
+    <form method="post" class="p-3" style="display: none" id="form">
+{#        style="background-color: #E8D33F; color: #57704e"#}
+        {% csrf_token %}
+        <div class="form-group row">
+            <label for="{{ form.status.id_for_label }}" class="col-sm-2 col-form-label">Status: </label>
+            <div class="col-sm-10">
+                {{ form.status }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="{{ form.name.id_for_label }}" class="col-sm-2 col-form-label">Nazwa: </label>
+            <div class="col-sm-10">
+                {{ form.name }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="{{ form.description.id_for_label }}" class="col-sm-2 col-form-label">Szczegóły: </label>
+            <div class="col-sm-10">
+                {{ form.description }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="{{ form.photo.id_for_label }}" class="col-sm-2 col-form-label">Zdjęcie: </label>
+            <div class="col-sm-10">
+                {{ form.photo }}
+            </div>
+        </div>
+        <button type="submit" class="btn my-2 block-end" style="background-color: #57704e; color: #E8D33F">Zapisz</button>
+    </form>
+    <div class="d-flex flex-row-reverse px-10">
         <button class="btn" style="background-color: #E8D33F; color: #57704e" id="form-button">Dodaj rzecz</button>
     </div>
 </div>
-
-{#<form method="post">#}
-{#{% csrf_token %}#}
-{#{{ form }}#}
-{#</form>#}
-
-
 {% load static %}
 <script src="{% static 'items.js' %}"></script>
 {% endblock %}

@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     const formButton = document.querySelector('#form-button')
     const formDiv = document.querySelector('#form-div')
+    const form = document.querySelector('#form')
     formButton.addEventListener('click', function () {
-        const newForm = document.createElement('form')
-        newForm.innerHTML = {{ form }}
-        formDiv.appendChild(newForm)
+        if (form.hasAttribute('style')) {
+            form.removeAttribute('style')
+            formDiv.setAttribute('style', 'background-color: #E8D33F')
+        }
+        else {
+            form.setAttribute('style', 'display: none')
+            formDiv.removeAttribute('style')
+        }
     })
 })
