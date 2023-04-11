@@ -6,6 +6,14 @@
     <form method="post" style="">
         {% csrf_token %}
         {{ form.as_p }}
+        <div class="my-3">
+            <label>Numer telefonu: </label>
+            <input type="text" name="phone">
+        </div>
+        <div class="mb-3">
+            <label>Link do profilu Facebook: </label>
+            <input type="url" name="fb">
+        </div>
     <button class="btn" style="background-color: #E8D33F; color: #57704e" type="submit">Zarejestruj się</button>
     </form>
 </div>

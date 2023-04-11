@@ -9,16 +9,26 @@
                 <p>{{ item.description }}</p>
                 <p class="text-secondary">Dodał(a): {{ item.author }} | {{ item.created_on }}</p>
             </div>
-            {% if item.photo %}
+            {% if item.photos %}
             <div class="px-3">
-                <img src="{{ item.photo.url }}" height="200">
+                {% for photo in item.photos.all %}
+                    <img src="{{ photo.photo.url }}" class="img-thumbnail" width="200" height="150">
+                {% endfor %}
             </div>
             {% endif %}
+        </div>
+        <div class="card p-3 mt-4" style="background-color: #57704e">
+            <div>
+                <form method="post"> {% csrf_token %}
+                    <input type="text">
+                </form>
+                <button class="btn" style="background-color: #E8D33F; color: #57704e">Dodaj komentarz</button>
+            </div>
         </div>
     </div>
 {%  endfor %}
 <div class="fixed-bottom container" id="form-div">
-    <form method="POST" class="p-3" style="display: none" id="form">
+    <form method="POST" class="p-3" style="display: none" id="form" enctype="multipart/form-data">
 {#        style="background-color: #E8D33F; color: #57704e"#}
         {% csrf_token %}
         {{ form.author }}
@@ -41,9 +51,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="{{ form.photo.id_for_label }}" class="col-sm-2 col-form-label">Zdjęcie: </label>
+            <label class="col-sm-2 col-form-label">Zdjęcia: </label>
             <div class="col-sm-10">
-                {{ form.photo }}
+                <input type="file" name="image" multiple>
             </div>
         </div>
         <button type="submit" class="btn my-2 block-end" style="background-color: #57704e; color: #E8D33F">Zapisz</button>
