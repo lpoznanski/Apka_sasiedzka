@@ -19,10 +19,17 @@
         </div>
         <div class="card p-3 mt-4" style="background-color: #57704e">
             <div>
-                <form method="post"> {% csrf_token %}
-                    <input type="text">
-                </form>
-                <button class="btn" style="background-color: #E8D33F; color: #57704e">Dodaj komentarz</button>
+                {% if item.comments %}
+                    {% for comment in item.comments.all %}
+                        <div class="rounded" style="background-color: #E8D33F">
+                        <p class="text-secondary">{{ comment.author }} | {{ comment.created_on }}</p>
+                        <p style="color: #57704e">{{ comment.content }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            </div>
+            <div>
+                <a href="{%  url 'comments' %}"><button class="btn" style="background-color: #E8D33F; color: #57704e">Dodaj komentarz</button></a>
             </div>
         </div>
     </div>

@@ -40,7 +40,7 @@ class Image(models.Model):
     photo = models.FileField(upload_to='media/items', null=True, blank=True)
 
 class Comment(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     content = models.TextField()

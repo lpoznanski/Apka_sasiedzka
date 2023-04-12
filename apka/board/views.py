@@ -5,7 +5,7 @@ from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import ItemForm, UserDetailForm
-from .models import Announcement, Item, Image, UserDetail
+from .models import Announcement, Item, Image, UserDetail, Comment
 
 class IndexView(generic.ListView):
     queryset = Announcement.objects.all().order_by('-created_on')
@@ -19,11 +19,6 @@ class ItemListView(FormMixin, LoginRequiredMixin, generic.ListView):
     queryset = Item.objects.all().order_by('-created_on')
     template_name = 'item_list.html'
     form_class = ItemForm
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(ItemListView, self).get_context_data(**kwargs)
-    #     context['form'] = ItemForm()
-    #     return context
 
     def post(self, request):
         form = ItemForm(request.POST, request.FILES)
@@ -43,3 +38,8 @@ class ItemListView(FormMixin, LoginRequiredMixin, generic.ListView):
 class UserDetailCreateView(generic.CreateView):
     model = UserDetail
     fields = '__all__'
+
+class CommentCreateView(generic.CreateView):
+    model = Comment
+    fields = '__all__'
+    success_url = '/items'
